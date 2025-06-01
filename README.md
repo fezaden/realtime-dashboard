@@ -1,59 +1,117 @@
-# RealtimeDashboard
+# Realtime Dashboard
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+Bu proje, **Angular 20** ile hazırlanmış gerçek zamanlı (realtime) admin dashboard örneğidir.  
+Canlı veri, dinamik tablo ve grafik, chat (mock WebSocket), login, ses kaydı gibi modern dashboard fonksiyonları içerir.
 
-## Development server
+---
 
-To start a local development server, run:
+## 🚀 Özellikler
+
+- **Güvenli Login:** Kriptolu şifre ile demo kullanıcı girişi
+- **Canlı DataGrid:** Otomatik güncellenen ürün tablosu (CRUD + filtreleme)
+- **Dinamik Grafik:** Gerçek zamanlı, büyüyen satış grafiği
+- **Mock WebSocket Chat:** Frontend tabanlı, anlık mesajlaşma ekranı
+- **Ses Kaydedici:** Tarayıcı ile ses kaydı & anında oynatma (anons işlemleri demo)
+- **Modern Tasarım:** Şık kartlar, responsive menü, sade ve profesyonel görünüm
+
+---
+
+## 🛠️ Kurulum
+
+Projeyi klonladıktan sonra terminalde şu komutları uygulayın:
 
 ```bash
+npm install
+Geliştirme Sunucusu
+bash
+Kopyala
+Düzenle
 ng serve
-```
+Uygulama http://localhost:4200/ adresinde çalışacaktır.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Demo Giriş Bilgileri
+makefile
+Kopyala
+Düzenle
+Kullanıcı adı: admin
+Şifre: 123456
+Temel Sayfalar ve Bileşenler
+Login: /login
 
-## Code scaffolding
+DataGrid: /dashboard/data-grid
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Charts: /dashboard/charts
 
-```bash
-ng generate component component-name
-```
+Voice Recorder: /dashboard/voice-recorder
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Mock WebSocket: /dashboard/mock-websocket
 
-```bash
-ng generate --help
-```
+Kod Scaffold'lama
+Yeni bir component eklemek için:
 
-## Building
-
-To build the project run:
-
-```bash
+bash
+Kopyala
+Düzenle
+ng generate component component-ismi
+Derleme
+bash
+Kopyala
+Düzenle
 ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
+Test
+bash
+Kopyala
+Düzenle
 ng test
-```
+📚 Klasör Yapısı (Kısa)
+bash
+Kopyala
+Düzenle
+src/
+  app/
+    auth/                # Login ekranı
+    dashboard/
+      data-grid/         # Canlı ürün tablosu
+      charts/            # Grafikler
+      voice-recorder/    # Ses kaydedici
+      mock-websocket/    # Anlık chat demo
+    shared/              # Ortak servisler
+    
+🛠️ Kullanılan Teknolojiler
+Angular 20
 
-## Running end-to-end tests
+Angular Material
 
-For end-to-end (e2e) testing, run:
+RxJS
 
-```bash
-ng e2e
-```
+Chart.js
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+CryptoJS
 
-## Additional Resources
+Modern CSS/SCSS
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+💡 Notlar
+Bu proje tamamen mock ve frontend odaklıdır.
+Gerçek backend entegrasyonu için servisler kolayca uyarlanabilir.
+
+Ses kaydı ve chat fonksiyonları demo amaçlıdır.
+
+Responsive ve sade dashboard arayüzü içerir.
+
+📄 Kaynaklar
+Angular CLI Belgeleri
+
+Angular Material
+
+Chart.js
+
+Kendi projenizde referans olarak kullanabilir, geliştirmeler ve PR’lar gönderebilirsiniz!
+
+yaml
+Kopyala
+Düzenle
+
+---
+
+**Başka bir dökümantasyon, örnek veya İngilizce istersen de hazırlayabilirim!**  
+Dosya ile ilgili başka ihtiyacın olursa hemen yazabilirsin.

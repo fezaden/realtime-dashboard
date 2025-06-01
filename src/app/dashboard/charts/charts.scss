@@ -1,0 +1,22 @@
+.card {
+  background: #fff;
+  border-radius: 1.6rem;
+  box-shadow: 0 6px 32px 0 rgba(50,80,130,0.12);
+  padding: 2rem 2.5rem 2.5rem 2.5rem;
+  max-width: 850px;
+  margin: 2rem auto;
+
+  h2 {
+    margin-bottom: 2rem;
+    color: #0d47a1;
+    font-size: 1.4rem;
+    font-weight: bold;
+  }
+  canvas {
+    display: block;
+    margin: 0 auto;
+    background: #f5f6fa;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(120,120,170,0.10);
+  }
+}

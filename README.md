@@ -95,7 +95,4 @@ Chart.js
 Kendi projenizde referans olarak kullanabilir, geliştirmeler ve PR’lar gönderebilirsiniz!
 
 
----
 
-**Başka bir dökümantasyon, örnek veya İngilizce istersen de hazırlayabilirim!**  
-Dosya ile ilgili başka ihtiyacın olursa hemen yazabilirsin.

@@ -20,21 +20,18 @@ Canlı veri, dinamik tablo ve grafik, chat (mock WebSocket), login, ses kaydı g
 
 Projeyi klonladıktan sonra terminalde şu komutları uygulayın:
 
-```bash
 npm install
 Geliştirme Sunucusu
-bash
-Kopyala
+
 Düzenle
 ng serve
 Uygulama http://localhost:4200/ adresinde çalışacaktır.
 
 Demo Giriş Bilgileri
-makefile
-Kopyala
-Düzenle
+
 Kullanıcı adı: admin
 Şifre: 123456
+
 Temel Sayfalar ve Bileşenler
 Login: /login
 
@@ -49,24 +46,14 @@ Mock WebSocket: /dashboard/mock-websocket
 Kod Scaffold'lama
 Yeni bir component eklemek için:
 
-bash
-Kopyala
-Düzenle
+
 ng generate component component-ismi
 Derleme
-bash
-Kopyala
 Düzenle
 ng build
 Test
-bash
-Kopyala
-Düzenle
 ng test
 📚 Klasör Yapısı (Kısa)
-bash
-Kopyala
-Düzenle
 src/
   app/
     auth/                # Login ekranı
@@ -107,9 +94,6 @@ Chart.js
 
 Kendi projenizde referans olarak kullanabilir, geliştirmeler ve PR’lar gönderebilirsiniz!
 
-yaml
-Kopyala
-Düzenle
 
 ---
 

@@ -3,20 +3,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { BehaviorSubject, Subscription, interval } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { LiveDataService, Product } from '../../shared/live-data.service';
 
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
-
-const MOCK_PRODUCTS: Product[] = [
-  { id: 1, name: 'Mouse', price: 120 },
-  { id: 2, name: 'Klavye', price: 200 },
-  { id: 3, name: 'Monitör', price: 1200 },
-  { id: 4, name: 'Laptop', price: 25000 }
-];
 
 @Component({
   selector: 'app-data-grid',
@@ -155,27 +144,23 @@ export class DataGridComponent implements OnInit, OnDestroy {
   filterValue = '';
   showAddForm = false;
   newProductName = '';
-  newProductPrice: any = '';
-  nextId = MOCK_PRODUCTS.length + 1;
+  newProductPrice: number | null = null;
   // Edit için
-  editId: number|null = null;
+  editId: number | null = null;
   editName = '';
-  editPrice: any = '';
+  editPrice: number | null = null;
 
-  private products$ = new BehaviorSubject<Product[]>([...MOCK_PRODUCTS]);
-  private liveDataSub!: Subscription;
+  products: Product[] = [];
+  private sub!: Subscription;
+
+  constructor(private liveData: LiveDataService) {}
 
   ngOnInit() {
-    // Her 5 saniyede yeni random ürün ekle (canlı veri simülasyonu)
-    this.liveDataSub = interval(5000).subscribe(() => this.addRandomProduct());
+    this.sub = this.liveData.products$.subscribe(p => (this.products = p));
   }
 
   ngOnDestroy() {
-    if (this.liveDataSub) this.liveDataSub.unsubscribe();
-  }
-
-  get products() {
-    return this.products$.value;
+    if (this.sub) this.sub.unsubscribe();
   }
 
   get filteredProducts() {
@@ -187,20 +172,20 @@ export class DataGridComponent implements OnInit, OnDestroy {
   }
 
   addProduct() {
-    if (!this.newProductName || !this.newProductPrice) return;
-    const updated = [
-      ...this.products,
-      { id: this.nextId++, name: this.newProductName, price: Number(this.newProductPrice) }
-    ];
-    this.products$.next(updated);
+    if (!this.newProductName || this.newProductPrice == null) return;
+    const product: Product = {
+      id: this.liveData.getNextId(),
+      name: this.newProductName,
+      price: this.newProductPrice,
+    };
+    this.liveData.addProduct(product);
     this.newProductName = '';
-    this.newProductPrice = '';
+    this.newProductPrice = null;
     this.showAddForm = false;
   }
 
   deleteProduct(id: number) {
-    const updated = this.products.filter(p => p.id !== id);
-    this.products$.next(updated);
+    this.liveData.deleteProduct(id);
     if (this.editId === id) this.editId = null;
   }
 
@@ -211,21 +196,15 @@ export class DataGridComponent implements OnInit, OnDestroy {
   }
 
   saveEdit(product: Product) {
-    const updated = this.products.map(p =>
-      p.id === product.id ? { ...p, name: this.editName, price: Number(this.editPrice) } : p
-    );
-    this.products$.next(updated);
+    if (this.editPrice == null) return;
+    this.liveData.updateProduct({
+      id: product.id,
+      name: this.editName,
+      price: this.editPrice,
+    });
     this.editId = null;
     this.editName = '';
-    this.editPrice = '';
+    this.editPrice = null;
   }
 
-  addRandomProduct() {
-    const names = ['Mikrofon', 'Hoparlör', 'Tablet', 'Kamera', 'Webcam'];
-    const name = names[Math.floor(Math.random() * names.length)];
-    const price = Math.floor(Math.random() * 9000) + 100;
-    const newProduct = { id: this.nextId++, name, price };
-    const updated = [...this.products, newProduct];
-    this.products$.next(updated);
-  }
 }
